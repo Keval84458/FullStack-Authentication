@@ -14,7 +14,7 @@ const handleSignup = async (req, res) => {
 
     //Check email is exists or not
     const user = await USER.findOne({ email });
-    if (!user) {
+    if (user) {
       return res.status(409).json({ msg: "Email already exists...." });
     }
 
