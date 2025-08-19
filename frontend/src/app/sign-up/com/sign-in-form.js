@@ -11,17 +11,17 @@ const SignInform = () => {
   });
   const router = useRouter();
 
-  const onChnage = (key, value) => setFormData({ ...formData, [key]: value });
+  const onChange = (key, value) => setFormData({ ...formData, [key]: value });
 
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     try {
       const payload = { ...formData };
-      const response = await axios.post(
+      console.log(payload);
+      const reponse = await axios.post(
         "http://localhost:2025/register",
         payload
       );
-
-      if (response.status === 201 && response !== undefined) {
+      if (reponse.status === 201 && reponse !== undefined) {
         router.push("/login");
       } else {
         alert("register failed.....");
@@ -47,7 +47,7 @@ const SignInform = () => {
               required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={formData.name}
-              onChange={(e) => onChnage("name", e.target.value)}
+              onChange={(e) => onChange("name", e.target.value)}
             />
           </div>
 
@@ -59,7 +59,7 @@ const SignInform = () => {
               required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={formData.email}
-              onChange={(e) => onChnage("email", e.target.value)}
+              onChange={(e) => onChange("email", e.target.value)}
             />
           </div>
 
@@ -71,14 +71,14 @@ const SignInform = () => {
               required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={formData.password}
-              onChange={(e) => onChnage("password", e.target.value)}
+              onChange={(e) => onChange("password", e.target.value)}
             />
           </div>
 
           <button
             type="button"
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
-            onClick={handleLogin}
+            onClick={handleSignUp}
           >
             Sign Up
           </button>
