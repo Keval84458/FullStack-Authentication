@@ -34,16 +34,7 @@ const handleLogin = async (req, res) => {
       }
     );
 
-    //Set JWT token in https cookie
-    res.cookie("authToken", jwtToken, {
-      httpOnly: true,
-      secure: true,
-      path: "/",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 1000,
-    });
-
-    res.status(200).json({
+    return res.status(200).json({
       msg: "Login Successfully.....",
       user: {
         id: users._id,

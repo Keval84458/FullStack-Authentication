@@ -28,7 +28,7 @@ connectionOfMongoDB(process.env.CONNECT_MONGO_DB);
 
 //Creating Routes
 app.use("/register", useSignUp);
-app.use("/auth-with-password", useLogin);
+app.use("/api/auth-with-password", useLogin);
 app.use("/authenticated", useAuthenticated);
 app.use("/logout", useLogout);
 
