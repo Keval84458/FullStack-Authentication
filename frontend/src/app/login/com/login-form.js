@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { responseCookiesToRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Loginform = () => {
@@ -8,6 +8,7 @@ const Loginform = () => {
     email: "",
     password: "",
   });
+  const router = useRouter();
 
   const onChange = (key, value) => setFormData({ ...formData, [key]: value });
 
@@ -20,6 +21,7 @@ const Loginform = () => {
       );
       if (reponse) {
         localStorage.setItem("userToken", reponse.data.token);
+        router.push("/");
       }
     } catch (err) {
       console.log("err", err);
